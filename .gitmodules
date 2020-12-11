@@ -1,3 +1,9 @@
 [submodule "themes/powerlevel9k"]
 	path = themes/powerlevel9k
 	url = https://github.com/bhilburn/powerlevel9k.git
+[submodule "plugins/plugins/tig"]
+	path = plugins/plugins/tig
+	url = git@github.com:jonas/tig.git
+[submodule "plugins/tig"]
+	path = plugins/tig
+	url = git@github.com:jonas/tig.git

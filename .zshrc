@@ -15,3 +15,8 @@ source $THEMES/powerlevel9k/powerlevel9k.zsh-theme
 
 #theme end
 
+#plugins start
+
+source $PLUGINS/tig
+
+#plugins end
