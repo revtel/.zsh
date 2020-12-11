@@ -11,6 +11,13 @@ fi
 export PLUGINS="$PREFIX_PATH/plugins"
 export THEMES="$PREFIX_PATH/themes"
 
+# install hand nerd fonts
+
+cp $HOME/.zsh/fonts/hack_nerd/*.ttf /Library/Fonts
+
+#
+
+
 #theme start
 
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir vcs)
