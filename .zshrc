@@ -1,8 +1,13 @@
-USER_NAME=chienli # plz replace the USER_NAME
+# user can pass their own PREFIX_PATH to customize the zsh path,
+# otherwise we will use shell var HOME, and assume they clone
+# the repo into .zsh directory
+if [[ $PREFIX_PATH = '' ]]
+then
+  PREFIX_PATH="$HOME/.zsh"
+fi
 
-export ZSH="/Users/$USER_NAME/.zsh"
-export PLUGINS="/Users/$USER_NAME/.zsh/plugins"
-export THEMES="/Users/$USER_NAME/.zsh/themes"
+export PLUGINS="$PREFIX_PATH/plugins"
+export THEMES="$PREFIX_PATH/themes"
 
 #theme start
 
