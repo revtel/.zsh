@@ -10,6 +10,7 @@ fi
 
 export PLUGINS="$PREFIX_PATH/plugins"
 export THEMES="$PREFIX_PATH/themes"
+export FONTS="$PREFIX_PATH/fonts"
 
 #alias start
 
@@ -19,7 +20,12 @@ alias sc="source $HOME/.zshrc"
 
 # install hand nerd fonts
 
-cp $HOME/.zsh/fonts/hack_nerd/*.ttf /Library/Fonts
+# if OS is OS X
+if [ `uname` = "Darwin" ]; then
+  cp $FONTS/hack_nerd/*.ttf /Library/Fonts
+  echo "nerd fonts installed"
+fi
+
 
 #
 
