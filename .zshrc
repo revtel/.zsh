@@ -11,6 +11,12 @@ fi
 export PLUGINS="$PREFIX_PATH/plugins"
 export THEMES="$PREFIX_PATH/themes"
 
+#alias start
+
+alias sc="source $HOME/.zshrc"
+
+#alias end
+
 # install hand nerd fonts
 
 cp $HOME/.zsh/fonts/hack_nerd/*.ttf /Library/Fonts
