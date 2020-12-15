@@ -76,6 +76,7 @@ zplug "b4b4r07/enhancd", use:init.sh
 zplug "robbyrussell/oh-my-zsh", use:"lib/*.zsh"
 zplug "plugins/tig", from:oh-my-zsh
 zplug "plugins/git", from:oh-my-zsh, if:"(( $+commands[git] ))"
+zplug "plugins/docker", from:oh-my-zsh
 
 
 #plugins end
