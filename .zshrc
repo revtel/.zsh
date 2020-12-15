@@ -2,6 +2,7 @@
 # otherwise we will use shell var HOME, and assume they clone
 # the repo into .zsh directory
 
+
 if [[ $PREFIX_PATH = '' ]]
 then
   PREFIX_PATH="$HOME/.zsh"
@@ -37,9 +38,16 @@ source $ALIASES/zsh.sh
 # install fonts start
 
 # if OS is OS X
+
+nerdfonts=("Hack Regular Nerd Font Complete.ttf" "Hack Bold Nerd Font Complete.ttf" "Hack Bold Italic Nerd Font Complete.ttf" "Hack Bold Nerd Font Complete.ttf")
+
 if [ `uname` = "Darwin" ]; then
-  cp $FONTS/hack_nerd/*.ttf /Library/Fonts
-  echo "nerd fonts installed"
+  for nerdfont in ${nerdfonts[@]}; do
+    if [ ! -f /Library/Fonts/$nerdfont ]; then
+      cp $FONTS/hack_nerd/$nerdfont /Library/Fonts 
+      echo "nerd fonts installed"
+    fi
+  done
 fi
 
 
