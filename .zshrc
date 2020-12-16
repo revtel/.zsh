@@ -1,4 +1,5 @@
 export TERM="xterm-256color"
+export LANG=en_US.UTF-8
 
 if [[ `uname` = "Darwin" ]]; then
   echo "Mac OS"
