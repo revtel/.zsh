@@ -8,7 +8,7 @@ else
   case $CONTRIBUTOR_ID  in
 	  amzn) 
 	    echo "amazon linux yum"
-	    dependencies=("zsh" "fzf" "vim")
+	    dependencies=("fzf" "vim")
 	    for dependency in ${dependencies[@]}; do  
 		if ! type $dependency > /dev/null; then
 		    yum install $dependency
