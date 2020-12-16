@@ -3,8 +3,8 @@ if [[ `uname` = "Darwin" ]]; then
   echo "Mac OS"
 else
   echo "Linux"
-  CONTRIBUTOR_ID=cat /etc/*-release | grep '^ID=' | cut -d '=' -f 2 | tr -d '"'
-  case `$CONTRIBUTOR_ID`  in
+  CONTRIBUTOR_ID=$(cat /etc/*-release | grep '^ID=' | cut -d '=' -f 2 | tr -d '"')
+  case $CONTRIBUTOR_ID  in
 	  amzn) echo "amazon linux yum" ;;
 	  debian) echo "debian apt" ;;
 	  ubuntu) echo "ubuntu apt" ;;
