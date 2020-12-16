@@ -15,7 +15,7 @@ ALIASES="$PREFIX_PATH/aliases"
 
 # install dependicies for using zplug
 
-dependencies=("git" "awk" "zsh")
+dependencies=("git" "awk" "zsh" "fzf")
 
 for dependency in ${dependencies[@]}; do  
     if ! type $dependency > /dev/null; then
