@@ -6,7 +6,15 @@ else
   echo "Linux"
   CONTRIBUTOR_ID=$(cat /etc/*-release | grep '^ID=' | cut -d '=' -f 2 | tr -d '"')
   case $CONTRIBUTOR_ID  in
-	  amzn) echo "amazon linux yum" ;;
+	  amzn) 
+	    echo "amazon linux yum"
+	    dependencies=("zsh" "fzf" "vim")
+	    for dependency in ${dependencies[@]}; do  
+		if ! type $dependency > /dev/null; then
+		    yum install $dependency
+		fi
+	    done
+	    ;;
 	  debian) echo "debian apt" ;;
 	  ubuntu) echo "ubuntu apt" ;;
 	  *) echo "unknow" ;;
@@ -30,13 +38,13 @@ ALIASES="$PREFIX_PATH/aliases"
 
 # install dependicies for using zplug
 
-dependencies=("git" "awk" "zsh" "fzf")
+#dependencies=("awk" "zsh" "fzf" "vim")
 
-for dependency in ${dependencies[@]}; do  
-    if ! type $dependency > /dev/null; then
-        apt install $dependency
-    fi
-done
+#for dependency in ${dependencies[@]}; do  
+    #if ! type $dependency > /dev/null; then
+        #apt install $dependency
+    #fi
+#done
 
 
 # start initializing zplug ...
