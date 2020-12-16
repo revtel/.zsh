@@ -1,3 +1,17 @@
+
+if [[ `uname` = "Darwin" ]]; then
+  echo "Mac OS"
+else
+  echo "Linux"
+  CONTRIBUTOR_ID=cat /etc/*-release | grep '^ID=' | cut -d '=' -f 2 | tr -d '"'
+  case `$CONTRIBUTOR_ID`  in
+	  amzn) echo "amazon linux yum" ;;
+	  debian) echo "debian apt" ;;
+	  ubuntu) echo "ubuntu apt" ;;
+	  *) echo "unknow" ;;
+  esac
+fi
+
 # user can pass their own PREFIX_PATH to customize the zsh path,
 # otherwise we will use shell var HOME, and assume they clone
 # the repo into .zsh directory
