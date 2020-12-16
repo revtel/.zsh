@@ -1,3 +1,4 @@
+export TERM="xterm-256color"
 
 if [[ `uname` = "Darwin" ]]; then
   echo "Mac OS"
