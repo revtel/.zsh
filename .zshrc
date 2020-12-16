@@ -56,8 +56,9 @@ fi
 
 #theme start
 
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(user dir vcs)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs history time)
+POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
 POWERLEVEL9K_MODE='nerdfont-complete'
 
 zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme
