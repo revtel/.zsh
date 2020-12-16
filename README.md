@@ -19,3 +19,17 @@ $ chmod u+x *.sh
 > u 代表所有者。 x 代表執行權限。 ’+’ 表示增加權限。
 > chmod u+x file.sh 就表示對當前目錄下的file.sh文件的所有者增加可執行權限。
 
+# Run on amazon linux
+
+```
+$ docker run -i -t amazonlinux /bin/bash
+```
+
+```
+$ yum install git zsh
+$ cd ~
+$ git clone https://github.com/revtel/.zsh
+$ echo "source $HOME/.zsh/.zshrc" > $HOME/.zshrc
+$ zsh
+```
+
