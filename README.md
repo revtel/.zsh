@@ -49,3 +49,20 @@ $ locale-gen "en_US.UTF-8"
 $ update-locale LC_ALL="en_US.UTF-8"
 $ zsh
 ```
+
+# Run on debian
+
+```
+$ docker run -i -t debian /bin/bash
+```
+
+```
+$ apt update
+$ apt install zsh git locales
+$ cd ~
+$ git clone https://github.com/revtel/.zsh
+$ echo "source $HOME/.zsh/.zshrc" > $HOME/.zshrc
+$ locale-gen "en_US.UTF-8"
+$ localedef -i en_US -f UTF-8 en_US.UTF-8
+$ zsh
+```
