@@ -3,16 +3,26 @@ export LANG=en_US.UTF-8
 
 if [[ `uname` = "Darwin" ]]; then
   echo "Mac OS"
+  if  ! type "brew" > /dev/null ; then
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  fi
+  dependencies=("awk" "fzf" "vim" "python")
+
+  for dependency in ${dependencies[@]}; do  
+      if ! type $dependency > /dev/null; then
+	  brew -y install $dependency
+      fi
+  done
 else
   echo "Linux"
   CONTRIBUTOR_ID=$(cat /etc/*-release | grep '^ID=' | cut -d '=' -f 2 | tr -d '"')
   case $CONTRIBUTOR_ID  in
 	  amzn) 
 	    echo "amazon linux yum"
-	    dependencies=("fzf" "vim")
+	    dependencies=("fzf" "vim" "python")
 	    for dependency in ${dependencies[@]}; do  
 		if ! type $dependency > /dev/null; then
-		    yum install $dependency
+		    yum -y install $dependency
 		fi
 	    done
 	    ;;
@@ -21,7 +31,7 @@ else
 	    dependencies=("fzf" "vim" "python")
 	    for dependency in ${dependencies[@]}; do  
 		if ! type $dependency > /dev/null; then
-		    apt install $dependency
+		    apt -y install $dependency
 		fi
 	    done
 	    ;;
@@ -43,16 +53,6 @@ PLUGINS="$PREFIX_PATH/plugins"
 THEMES="$PREFIX_PATH/themes"
 FONTS="$PREFIX_PATH/fonts"
 ALIASES="$PREFIX_PATH/aliases"
-
-# install dependicies for using zplug
-
-#dependencies=("awk" "zsh" "fzf" "vim")
-
-#for dependency in ${dependencies[@]}; do  
-    #if ! type $dependency > /dev/null; then
-        #apt install $dependency
-    #fi
-#done
 
 
 # start initializing zplug ...
