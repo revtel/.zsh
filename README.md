@@ -33,3 +33,19 @@ $ echo "source $HOME/.zsh/.zshrc" > $HOME/.zshrc
 $ zsh
 ```
 
+# Run on ubuntu
+
+```
+$ docker run -i -t ubuntu /bin/bash
+```
+
+```
+$ apt update
+$ apt install zsh git locales
+$ cd ~
+$ git clone https://github.com/revtel/.zsh
+$ echo "source $HOME/.zsh/.zshrc" > $HOME/.zshrc
+$ locale-gen "en_US.UTF-8"
+$ update-locale LC_ALL="en_US.UTF-8"
+$ zsh
+```
