@@ -16,8 +16,15 @@ else
 		fi
 	    done
 	    ;;
-	  debian) echo "debian apt" ;;
-	  ubuntu) echo "ubuntu apt" ;;
+	  debian | ubuntu)
+	    echo "debian or ubuntu apt"
+	    dependencies=("fzf" "vim")
+	    for dependency in ${dependencies[@]}; do  
+		if ! type $dependency > /dev/null; then
+		    apt install $dependency
+		fi
+	    done
+	    ;;
 	  *) echo "unknow" ;;
   esac
 fi
