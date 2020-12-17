@@ -18,7 +18,7 @@ else
 	    ;;
 	  debian | ubuntu)
 	    echo "debian or ubuntu apt"
-	    dependencies=("fzf" "vim")
+	    dependencies=("fzf" "vim" "python")
 	    for dependency in ${dependencies[@]}; do  
 		if ! type $dependency > /dev/null; then
 		    apt install $dependency
