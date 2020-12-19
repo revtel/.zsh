@@ -3,10 +3,9 @@
 ## 如何安裝zsh ? (How to use this repo to setup .zshrc) 
 
 ```
-# pwd -> $HOME
-$ git clone https://github.com/revtel/.zsh
-$ echo "source $HOME/.zsh/.zshrc" > $HOME/.zshrc
+$ git clone https://github.com/revtel/.zsh ~/.zsh && echo "source $HOME/.zsh/.zshrc" > $HOME/.zshrc
 ```
+
 ## Troubleshooting
 
 - 安裝完若遇到權限問題，可嘗試以下指令。(if you encountered the permission denied , can try below command)
