@@ -2,7 +2,6 @@ export TERM="xterm-256color"
 export LANG=en_US.UTF-8
 
 if [[ `uname` = "Darwin" ]]; then
-  echo "Mac OS"
   if  ! type "brew" > /dev/null ; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   fi
@@ -14,11 +13,9 @@ if [[ `uname` = "Darwin" ]]; then
       fi
   done
 else
-  echo "Linux"
   CONTRIBUTOR_ID=$(cat /etc/*-release | grep '^ID=' | cut -d '=' -f 2 | tr -d '"')
   case $CONTRIBUTOR_ID  in
 	  amzn) 
-	    echo "amazon linux yum"
 	    dependencies=("fzf" "vim" "python")
 	    for dependency in ${dependencies[@]}; do  
 		if ! type $dependency > /dev/null; then
@@ -27,7 +24,6 @@ else
 	    done
 	    ;;
 	  debian | ubuntu)
-	    echo "debian or ubuntu apt"
 	    dependencies=("fzf" "vim" "python")
 	    for dependency in ${dependencies[@]}; do  
 		if ! type $dependency > /dev/null; then
