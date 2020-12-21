@@ -9,7 +9,7 @@ if [[ `uname` = "Darwin" ]]; then
 
   for dependency in ${dependencies[@]}; do  
       if ! type $dependency > /dev/null; then
-	  brew -y install $dependency
+        brew install $dependency
       fi
   done
 else
