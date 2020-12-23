@@ -5,18 +5,18 @@ if [[ `uname` = "Darwin" ]]; then
   if  ! type "brew" > /dev/null ; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   fi
-  dependencies=("awk" "fzf" "vim" "python")
+  dependencies=("vim" "python")
 
   for dependency in ${dependencies[@]}; do  
       if ! type $dependency > /dev/null; then
-	  brew -y install $dependency
+	  brew install $dependency
       fi
   done
 else
   CONTRIBUTOR_ID=$(cat /etc/*-release | grep '^ID=' | cut -d '=' -f 2 | tr -d '"')
-  case $CONTRIBUTOR_ID  in
+  case $CONTRIBUTION_ID  in
 	  amzn) 
-	    dependencies=("fzf" "vim" "python")
+	    dependencies=("vim" "python")
 	    for dependency in ${dependencies[@]}; do  
 		if ! type $dependency > /dev/null; then
 		    yum -y install $dependency
@@ -24,7 +24,7 @@ else
 	    done
 	    ;;
 	  debian | ubuntu)
-	    dependencies=("fzf" "vim" "python")
+	    dependencies=("vim" "python")
 	    for dependency in ${dependencies[@]}; do  
 		if ! type $dependency > /dev/null; then
 		    apt -y install $dependency
@@ -62,35 +62,6 @@ source $ALIASES/zsh.sh
 
 #alias sourcing end
 
-# install fonts start
-
-# if OS is OS X
-
-nerdfonts=("Hack Regular Nerd Font Complete.ttf" "Hack Bold Nerd Font Complete.ttf" "Hack Bold Italic Nerd Font Complete.ttf" "Hack Bold Nerd Font Complete.ttf")
-
-if [ `uname` = "Darwin" ]; then
-  for nerdfont in ${nerdfonts[@]}; do
-    if [ ! -f /Library/Fonts/$nerdfont ]; then
-      cp $FONTS/hack_nerd/$nerdfont /Library/Fonts 
-      echo "nerd fonts installed"
-    fi
-  done
-fi
-
-
-# install fonts end
-
-
-#theme start
-
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs history time)
-POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
-POWERLEVEL9K_MODE='nerdfont-complete'
-
-zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme
-
-#theme end
 
 #plugins start
 
@@ -98,16 +69,18 @@ zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-syntax-highlighting", from:github
 zplug "zsh-users/zsh-history-substring-search", from:github, defer:2
-zplug "zsh-users/zsh-autosuggestions"
 zplug "djui/alias-tips", from:github
-zplug "b4b4r07/enhancd", use:init.sh
+zplug "zsh-users/zsh-autosuggestions"
 zplug "robbyrussell/oh-my-zsh", use:"lib/*.zsh"
 zplug "plugins/tig", from:oh-my-zsh
 zplug "plugins/git", from:oh-my-zsh, if:"(( $+commands[git] ))"
 zplug "plugins/docker", from:oh-my-zsh
+zplug 'dracula/zsh', as:theme
 
 
 #plugins end
+
+zplug clean
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
