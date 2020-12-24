@@ -13,22 +13,22 @@ if [[ `uname` = "Darwin" ]]; then
       fi
   done
 else
-  CONTRIBUTOR_ID=$(cat /etc/*-release | grep '^ID=' | cut -d '=' -f 2 | tr -d '"')
-  case $CONTRIBUTION_ID  in
+  DISTRIBUTION_ID=$(cat /etc/*-release | grep '^ID=' | cut -d '=' -f 2 | tr -d '"')
+  case $DISTRIBUTION_ID  in
 	  amzn) 
 	    dependencies=("vim" "python")
 	    for dependency in ${dependencies[@]}; do  
-		if ! type $dependency > /dev/null; then
-		    yum -y install $dependency
-		fi
+        if ! type $dependency > /dev/null; then
+		      yum -y install $dependency
+        fi
 	    done
 	    ;;
 	  debian | ubuntu)
 	    dependencies=("vim" "python")
 	    for dependency in ${dependencies[@]}; do  
-		if ! type $dependency > /dev/null; then
-		    apt -y install $dependency
-		fi
+        if ! type $dependency > /dev/null; then
+          apt -y install $dependency
+        fi
 	    done
 	    ;;
 	  *) echo "unknow" ;;
@@ -40,8 +40,7 @@ fi
 # the repo into .zsh directory
 
 
-if [[ $PREFIX_PATH = '' ]]
-then
+if [[ $PREFIX_PATH = '' ]]; then
   PREFIX_PATH="$HOME/.zsh"
 fi
 
