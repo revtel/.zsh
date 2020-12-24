@@ -80,7 +80,6 @@ zplug 'dracula/zsh', as:theme
 
 #plugins end
 
-zplug clean
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
