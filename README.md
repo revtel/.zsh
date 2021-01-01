@@ -1,4 +1,4 @@
-# Revtel zsh configuration
+# Zsh Config
 
 ## Outline
 
