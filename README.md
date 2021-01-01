@@ -1,9 +1,28 @@
 # Revtel zsh configuration
 
-## 如何安裝zsh ? (How to use this repo to setup .zshrc) 
+## Outline
+
+- [Setup](#setup)
+- [Directory Structure](#directory-structure)
+- [Troubleshooting](#troubleshooting)
+- [Setup on Amazon Linux](#setup-on-amazon-linux)
+- [Setup on Ubuntu](#setup-on-ubuntu)
+- [Contact Us](#contact-us)
+
+## Setup 
 
 ```
-$ git clone https://github.com/revtel/.zsh ~/.zsh && echo "source $HOME/.zsh/.zshrc" > $HOME/.zshrc
+$ git clone https://github.com/revtel/.zsh ~/.zsh 
+$ echo "source $HOME/.zsh/.zshrc" > $HOME/.zshrc
+```
+
+## Directory Structure
+
+```
+.zsh
+├── README.md
+└── aliases
+    └── zsh.sh
 ```
 
 ## Troubleshooting
@@ -18,7 +37,7 @@ $ chmod u+x *.sh
 > u 代表所有者。 x 代表執行權限。 ’+’ 表示增加權限。
 > chmod u+x file.sh 就表示對當前目錄下的file.sh文件的所有者增加可執行權限。
 
-# Run on amazon linux
+## Setup on Amazon Linux
 
 ```
 $ docker run -i -t amazonlinux /bin/bash
@@ -32,7 +51,7 @@ $ echo "source $HOME/.zsh/.zshrc" > $HOME/.zshrc
 $ zsh
 ```
 
-# Run on ubuntu
+## Setup on Ubuntu
 
 ```
 $ docker run -i -t ubuntu /bin/bash
@@ -49,19 +68,6 @@ $ update-locale LC_ALL="en_US.UTF-8"
 $ zsh
 ```
 
-# Run on debian
+## Contact Us
 
-```
-$ docker run -i -t debian /bin/bash
-```
-
-```
-$ apt update
-$ apt install zsh git locales
-$ cd ~
-$ git clone https://github.com/revtel/.zsh
-$ echo "source $HOME/.zsh/.zshrc" > $HOME/.zshrc
-$ locale-gen "en_US.UTF-8"
-$ localedef -i en_US -f UTF-8 en_US.UTF-8
-$ zsh
-```
+[Revtel Tech](mailto:contact@revtel.tech)
