@@ -18,6 +18,7 @@ $ git clone https://github.com/revtel/.zsh ~/.zsh
 $ echo "source $HOME/.zsh/.zshrc" > $HOME/.zshrc
 $ echo "source $HOME/.zsh/.zprofile" > $HOME/.zprofile
 
+```
 
 ## Directory Structure
 
@@ -70,6 +71,7 @@ $ locale-gen "en_US.UTF-8"
 $ update-locale LC_ALL="en_US.UTF-8"
 $ zsh
 
+```
 
 ## Contributors
 
@@ -93,7 +95,6 @@ $ zsh
     </tr>
   </tbody>
 </table>
-```
 
 ## Contact Us
 
