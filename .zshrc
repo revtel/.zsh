@@ -24,7 +24,7 @@ else
 	    done
 	    ;;
 	  debian | ubuntu)
-	    dependencies=("vim" "python")
+	    dependencies=("vim" "python" "universal-ctags" "python3" "python3-pip" "curl" "silversearcher-ag")
 	    for dependency in ${dependencies[@]}; do  
         if ! type $dependency > /dev/null; then
           apt -y install $dependency
