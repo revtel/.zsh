@@ -12,6 +12,8 @@ if [[ `uname` = "Darwin" ]]; then
 	  brew install $dependency
       fi
   done
+  export FZF_DEFAULT_COMMAND='fd --type f'
+  export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 else
   DISTRIBUTION_ID=$(cat /etc/*-release | grep '^ID=' | cut -d '=' -f 2 | tr -d '"')
   case $DISTRIBUTION_ID  in
@@ -32,7 +34,8 @@ else
 	    done
       cd ~ && git clone https://github.com/junegunn/fzf.git && fzf/install
       pip3 install pynvim
-      alias fd=fdfind
+      export FZF_DEFAULT_COMMAND='fdfind --type f'
+      export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 	    ;;
 	  *) echo "unknow" ;;
   esac
@@ -83,8 +86,7 @@ zplug 'dracula/zsh', as:theme
 #plugins end
 
 
-export FZF_DEFAULT_COMMAND='fd --type f'
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
 
 
 # Install plugins if there are plugins that have not been installed
