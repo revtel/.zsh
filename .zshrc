@@ -24,12 +24,15 @@ else
 	    done
 	    ;;
 	  debian | ubuntu)
-	    dependencies=("vim" "python" "universal-ctags" "python3" "python3-pip" "curl" "silversearcher-ag")
+	    dependencies=("vim" "python" "universal-ctags" "python3" "python3-pip" "curl" "silversearcher-ag" "fd-find")
 	    for dependency in ${dependencies[@]}; do  
         if ! type $dependency > /dev/null; then
           apt -y install $dependency
         fi
 	    done
+      cd ~ && git clone https://github.com/junegunn/fzf.git && fzf/install
+      pip3 install pynvim
+      alias fd=fdfind
 	    ;;
 	  *) echo "unknow" ;;
   esac
@@ -78,7 +81,6 @@ zplug 'dracula/zsh', as:theme
 
 
 #plugins end
-
 
 
 export FZF_DEFAULT_COMMAND='fd --type f'
