@@ -5,7 +5,7 @@
 - [Setup](#setup)
 - [Directory Structure](#directory-structure)
 - [Troubleshooting](#troubleshooting)
-- Setup on Server
+- [Setup on Server](#setup-on-server)
     - [Setup on Amazon Linux](#setup-on-amazon-linux)
     - [Setup on Ubuntu](#setup-on-ubuntu)
 - [Contributors](#contributors)
@@ -13,7 +13,7 @@
 
 ## Setup
 
-```
+```zsh
 $ git clone https://github.com/revtel/.zsh ~/.zsh
 $ echo "source $HOME/.zsh/.zshrc" > $HOME/.zshrc
 $ echo "source $HOME/.zsh/.zprofile" > $HOME/.zprofile
@@ -33,7 +33,7 @@ $ echo "source $HOME/.zsh/.zprofile" > $HOME/.zprofile
 
 - 安裝完若遇到權限問題，可嘗試以下指令。(if you encountered the permission denied , can try below command)
 
-```
+```zsh
 # pwd -> $HOME/.zsh
 $ chmod u+x *.sh
 ```
@@ -41,13 +41,15 @@ $ chmod u+x *.sh
 > u 代表所有者。 x 代表執行權限。 ’+’ 表示增加權限。
 > chmod u+x file.sh 就表示對當前目錄下的file.sh文件的所有者增加可執行權限。
 
-## Setup on Amazon Linux
+## Setup on Server
 
-```
+### Setup on Amazon Linux
+
+```zsh
 $ docker run -i -t amazonlinux /bin/bash
 ```
 
-```
+```zsh
 $ yum install git zsh
 $ cd ~
 $ git clone https://github.com/revtel/.zsh
@@ -55,13 +57,13 @@ $ echo "source $HOME/.zsh/.zshrc" > $HOME/.zshrc
 $ zsh
 ```
 
-## Setup on Ubuntu
+### Setup on Ubuntu
 
-```
+```zsh
 $ docker run -i -t ubuntu /bin/bash
 ```
 
-```
+```zsh
 $ apt update
 $ apt install zsh git locales
 $ cd ~
