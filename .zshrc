@@ -1,41 +1,49 @@
-export TERM="xterm-256color"
-export LANG=en_US.UTF-8
-
-if [[ `uname` = "Darwin" ]]; then
+function darwin(){
   if  ! type "brew" > /dev/null ; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   fi
   dependencies=("vim" "python")
-
-  for dependency in ${dependencies[@]}; do  
+  for dependency in ${dependencies[@]}; do
       if ! type $dependency > /dev/null; then
 	  brew install $dependency
       fi
   done
   export FZF_DEFAULT_COMMAND='fd --type f'
   export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+}
+
+function amzn(){
+  dependencies=("vim" "python")
+  for dependency in ${dependencies[@]}; do
+    if ! type $dependency > /dev/null; then
+      yum -y install $dependency
+    fi
+  done
+}
+
+function ubuntu(){
+  dependencies=("vim" "python" "universal-ctags" "python3" "python3-pip" "curl" "silversearcher-ag" "fd-find")
+  for dependency in ${dependencies[@]}; do
+    if ! type $dependency > /dev/null; then
+      apt -y install $dependency
+    fi
+  done
+  cd ~ && git clone https://github.com/junegunn/fzf.git && fzf/install
+  pip3 install pynvim
+  export FZF_DEFAULT_COMMAND='fdfind --type f'
+  export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+}
+
+if [[ `uname` = "Darwin" ]]; then
+  darwin
 else
   DISTRIBUTION_ID=$(cat /etc/*-release | grep '^ID=' | cut -d '=' -f 2 | tr -d '"')
   case $DISTRIBUTION_ID  in
-	  amzn) 
-	    dependencies=("vim" "python")
-	    for dependency in ${dependencies[@]}; do  
-        if ! type $dependency > /dev/null; then
-		      yum -y install $dependency
-        fi
-	    done
+	  amzn)
+      amzn
 	    ;;
-	  debian | ubuntu)
-	    dependencies=("vim" "python" "universal-ctags" "python3" "python3-pip" "curl" "silversearcher-ag" "fd-find")
-	    for dependency in ${dependencies[@]}; do  
-        if ! type $dependency > /dev/null; then
-          apt -y install $dependency
-        fi
-	    done
-      cd ~ && git clone https://github.com/junegunn/fzf.git && fzf/install
-      pip3 install pynvim
-      export FZF_DEFAULT_COMMAND='fdfind --type f'
-      export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+	  ubuntu)
+      ubuntu
 	    ;;
 	  *) echo "unknow" ;;
   esac
@@ -64,6 +72,7 @@ source $HOME/.zplug/init.zsh
 #alias sourcing start
 
 source $ALIASES/zsh.sh
+source $ALIASES/git.sh
 
 #alias sourcing end
 
@@ -76,17 +85,9 @@ zplug "zsh-users/zsh-syntax-highlighting", from:github
 zplug "zsh-users/zsh-history-substring-search", from:github, defer:2
 zplug "djui/alias-tips", from:github
 zplug "zsh-users/zsh-autosuggestions"
-zplug "robbyrussell/oh-my-zsh", use:"lib/*.zsh"
-zplug "plugins/tig", from:oh-my-zsh
-zplug "plugins/git", from:oh-my-zsh, if:"(( $+commands[git] ))"
-zplug "plugins/docker", from:oh-my-zsh
 zplug 'dracula/zsh', as:theme
 
-
 #plugins end
-
-
-
 
 
 # Install plugins if there are plugins that have not been installed
@@ -97,4 +98,4 @@ if ! zplug check --verbose; then
     fi
 fi
 
-zplug load 
+zplug load

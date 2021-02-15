@@ -1,0 +1,8 @@
+alias gco="git checkout"
+alias gbr="git br"
+alias gst="git status"
+alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+alias gua="git checkout -- ."
+alias gaa="git add ."
+alias gcm="git commit -m"
+alias gds="git diff --staged"
